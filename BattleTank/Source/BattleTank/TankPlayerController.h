@@ -23,4 +23,13 @@ public:
 	
 	void AimTowardsCrosshair();
 
+	bool GetSightRayHitLocation(FVector& v) const;
+
+private:
+
+	UPROPERTY(EditAnywhere)
+	float CrosshairLocationX = 0.5f;
+	
+	UPROPERTY(EditAnywhere)
+	float CrosshairLocationY = 0.333f;
 };
