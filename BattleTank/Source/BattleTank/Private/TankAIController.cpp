@@ -13,18 +13,10 @@ void ATankAIController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Not poscessing a tank"));
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("%s is ready"), *t->GetName());
-	}
 	
 	if (!pt)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Cant find player"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Found: %s"), *pt->GetName());
 	}
 }
 

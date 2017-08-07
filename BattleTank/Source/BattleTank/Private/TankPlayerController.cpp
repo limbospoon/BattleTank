@@ -14,10 +14,6 @@ void ATankPlayerController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Not poscessing a tank"));
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("%s : Reporting for duty"), *t->GetName());
-	}
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
@@ -36,7 +32,8 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation;
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
+		UE_LOG(LogTemp, Warning, TEXT("Hit something"));
+		GetControlledTank()->AimAt(HitLocation);
 	}
 }
 
@@ -53,7 +50,11 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 	if (GetLookDirection(ScreenLocation, LookDir))
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("LookDirection: %s"), *LookDir.ToString());
-		GetHitLocationVector(LookDir, HitLocation);
+		if (GetHitLocationVector(LookDir, HitLocation))
+		{
+			return true;
+		}
+
 	}
 	
 	return false;
@@ -78,7 +79,6 @@ bool ATankPlayerController::GetHitLocationVector(FVector LookDirection, FVector&
 		)
 	{
 		HitLocation = HitResult.Location;
-		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
 		return true;
 	}
 
