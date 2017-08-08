@@ -39,3 +39,8 @@ void UTankAimingComponent::AimAt(FVector Target)
 	UE_LOG(LogTemp, Warning, TEXT("%s aiming at: %s"), *OurTank, *Target.ToString());
 }
 
+void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+{
+	Barrel = BarrelToSet;
+}
+
