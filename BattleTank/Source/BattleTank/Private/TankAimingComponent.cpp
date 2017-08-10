@@ -42,20 +42,28 @@ void UTankAimingComponent::AimAt(FVector Target, float LaunchSpeed)
 
 	FVector LaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Muzzle"));
-	
-	if (UGameplayStatics::SuggestProjectileVelocity(this,
+	//LaunchVelocity = StartLocation + Target * LaunchSpeed;
+	bool bHaveLaunchVelocity = UGameplayStatics::SuggestProjectileVelocity(
+		this,
 		LaunchVelocity,
 		StartLocation,
 		Target,
-		LaunchSpeed,
-		false, 0, 0,
-		ESuggestProjVelocityTraceOption::DoNotTrace
-		))
+		LaunchSpeed
+		);
+	if (bHaveLaunchVelocity)
 	{
 		auto AimDirection = LaunchVelocity.GetSafeNormal();
-		
-		UE_LOG(LogTemp, Warning, TEXT("Firing at: %s"), *AimDirection.ToString());
+		AimBarrel(AimDirection);
 	}
+}
+
+void UTankAimingComponent::AimBarrel(FVector RotateTo)
+{
+	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
+	auto AimAsRotator = RotateTo.Rotation();
+	auto DeltaRotator = AimAsRotator - BarrelRotator;
+
+	UE_LOG(LogTemp, Warning, TEXT("Rotating at: %s"), *AimAsRotator.ToString());
 }
 
 void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
