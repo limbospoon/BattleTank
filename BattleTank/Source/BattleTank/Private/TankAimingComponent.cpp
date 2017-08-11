@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BattleTank.h"
+#include "TankBarrel.h"
 #include "TankAimingComponent.h"
 
 
@@ -66,7 +67,7 @@ void UTankAimingComponent::AimBarrel(FVector RotateTo)
 	UE_LOG(LogTemp, Warning, TEXT("Rotating at: %s"), *AimAsRotator.ToString());
 }
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	Barrel = BarrelToSet;
 }
