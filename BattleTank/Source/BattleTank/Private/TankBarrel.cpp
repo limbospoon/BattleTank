@@ -3,7 +3,7 @@
 #include "BattleTank.h"
 #include "TankBarrel.h"
 
-void UTankBarrel::ElevateBarrel(float Degrees)
+void UTankBarrel::ElevateBarrel(float RotateSpeed)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Elevating at: %f"), Degrees);
+	
 }

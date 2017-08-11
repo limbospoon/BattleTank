@@ -49,7 +49,11 @@ void UTankAimingComponent::AimAt(FVector Target, float LaunchSpeed)
 		LaunchVelocity,
 		StartLocation,
 		Target,
-		LaunchSpeed
+		LaunchSpeed,
+		false,
+		0,
+		0,
+		ESuggestProjVelocityTraceOption::DoNotTrace
 		);
 	if (bHaveLaunchVelocity)
 	{
