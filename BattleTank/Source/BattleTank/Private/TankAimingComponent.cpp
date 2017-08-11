@@ -64,7 +64,7 @@ void UTankAimingComponent::AimBarrel(FVector RotateTo)
 	auto AimAsRotator = RotateTo.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 
-	UE_LOG(LogTemp, Warning, TEXT("Rotating at: %s"), *AimAsRotator.ToString());
+	Barrel->ElevateBarrel(5);
 }
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
