@@ -19,10 +19,4 @@ public:
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
 		float MaxRotationSpeed = 20;
-
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxYaw = 360;
-
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float MinYaw = 0;
 };
