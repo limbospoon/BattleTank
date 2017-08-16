@@ -45,4 +45,7 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Setup)
 	TSubclassOf<AProjectile> Projectile;
+
+	//Local barrel reference for projectile spawn
+	UTankBarrel* Barrel = nullptr;
 };
