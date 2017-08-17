@@ -43,6 +43,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 10000.0f;
 
+	float ReloadTimeInSeconds = 3.0f;
+	double LastFireTime = 0;
+
 	UPROPERTY(EditAnywhere, Category = Setup)
 	TSubclassOf<AProjectile> Projectile;
 
