@@ -81,7 +81,6 @@ bool ATankPlayerController::GetHitLocationVector(FVector LookDirection, FVector&
 		))
 	{
 		HitLocation = HitResult.Location;
-		DrawDebugPoint(GetWorld(), HitLocation, 100.0f, FColor::Emerald);
 		return true;
 	}
 

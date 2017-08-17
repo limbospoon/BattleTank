@@ -44,7 +44,6 @@ void UTankAimingComponent::AimAt(FVector Target, float LaunchSpeed)
 
 	FVector LaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Muzzle"));
-	//LaunchVelocity = StartLocation + Target * LaunchSpeed;
 	bool bHaveLaunchVelocity = UGameplayStatics::SuggestProjectileVelocity(
 		this,
 		LaunchVelocity,
@@ -89,8 +88,6 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 
 void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Calling Set Turret"));
-
 	Turret = TurretToSet;
 }
 

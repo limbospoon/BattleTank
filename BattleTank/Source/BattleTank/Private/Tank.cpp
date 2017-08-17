@@ -54,7 +54,6 @@ void ATank::Fire()
 	FVector  MuzzleLocation	 =  Barrel->GetSocketLocation(FName("Muzzle"));
 	FRotator MuzzleRotation  =	Barrel->GetSocketRotation(FName("Muzzle"));
 	
-	GetWorld()->SpawnActor<AProjectile>(Projectile, MuzzleLocation, MuzzleRotation);
-
-	UE_LOG(LogTemp, Warning, TEXT("Fired"));
+	auto _Projectile = GetWorld()->SpawnActor<AProjectile>(Projectile, MuzzleLocation, MuzzleRotation);
+	_Projectile->LaunchProjectile(LaunchSpeed);
 }
