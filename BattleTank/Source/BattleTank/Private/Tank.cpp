@@ -13,26 +13,12 @@ ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
-
-	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
 }
 
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-}
-
-// Called to bind functionality to input
-void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
-
-void ATank::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
-{
-	TankAimingComponent->Initialise(BarrelToSet, TurretToSet);
-	Barrel = BarrelToSet;
 }
 
 void ATank::AimAt(FVector Target)
@@ -43,10 +29,10 @@ void ATank::AimAt(FVector Target)
 void ATank::Fire()
 {
 	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
-	FVector  MuzzleLocation = Barrel->GetSocketLocation(FName("Muzzle"));
-	FRotator MuzzleRotation = Barrel->GetSocketRotation(FName("Muzzle"));
+	FVector  MuzzleLocation = TankAimingComponent->Barrel->GetSocketLocation(FName("Muzzle"));
+	FRotator MuzzleRotation = TankAimingComponent->Barrel->GetSocketRotation(FName("Muzzle"));
 
-	if (Barrel && bIsReloaded)
+	if (TankAimingComponent->Barrel && bIsReloaded)
 	{
 		auto _Projectile = GetWorld()->SpawnActor<AProjectile>(Projectile, MuzzleLocation, MuzzleRotation);
 		_Projectile->LaunchProjectile(LaunchSpeed);

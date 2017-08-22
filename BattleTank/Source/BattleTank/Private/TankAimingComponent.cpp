@@ -71,6 +71,7 @@ void UTankAimingComponent::AimAt(FVector Target, float LaunchSpeed)
 
 void UTankAimingComponent::AimBarrel(FVector RotateTo)
 {
+	if (!Barrel) { return; }
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = RotateTo.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
@@ -80,6 +81,7 @@ void UTankAimingComponent::AimBarrel(FVector RotateTo)
 
 void UTankAimingComponent::AimTurret(FVector RotateTo)
 {
+	if (!Turret) { return; }
 	auto TurretRotator = Turret->GetForwardVector().Rotation();
 	auto AimAsRotator = RotateTo.Rotation();
 	auto DeltaRotator = AimAsRotator - TurretRotator;

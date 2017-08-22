@@ -17,8 +17,6 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
 	void AimAt(FVector Target);
 
@@ -37,9 +35,6 @@ private:
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	UPROPERTY(EditAnywhere, Category = "Firing")
 	TSubclassOf<AProjectile> Projectile;
@@ -51,7 +46,4 @@ private:
 	float ReloadTimeInSeconds = 3.0f;
 
 	double LastFireTime = 0;
-	
-	//Local barrel reference for projectile spawn
-	UTankBarrel* Barrel = nullptr;
 };

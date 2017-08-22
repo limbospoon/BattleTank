@@ -21,10 +21,15 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 {
 	GENERATED_BODY()
 public:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
+
 	void AimAt(FVector Target, float LaunchSpeed);
 	void AimBarrel(FVector RotateTo);
 	void AimTurret(FVector RotateTo);
+
+	UTankBarrel* Barrel = nullptr;
+	UTankTurret* Turret = nullptr;
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
@@ -41,6 +46,4 @@ private:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UTankBarrel* Barrel = nullptr;
-	UTankTurret* Turret = nullptr;
 };
