@@ -16,7 +16,6 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 	
 public:
 
-	ATank* GetControlledTank() const;
 	
 	void BeginPlay() override;
 	void Tick(float DeltaTime) override;
@@ -26,6 +25,10 @@ public:
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
 	bool GetLookDirection(FVector2D ScreenLoc, FVector& LookDirection) const;
 	bool GetHitLocationVector(FVector LookDirection, FVector& HitLocation) const;
+
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	ATank* GetControlledTank() const;
 
 private:
 

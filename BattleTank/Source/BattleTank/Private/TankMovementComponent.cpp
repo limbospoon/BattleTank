@@ -23,7 +23,7 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 	auto AIMoveVelocity = FVector::DotProduct(TankForward, AIForwardIntention);
 	IntendMoveForward(AIMoveVelocity);
 
-	auto RotationVector = FVector::CrossProduct(TankForward, AIForwardIntention);
+	auto RotationVector = FVector::CrossProduct(AIForwardIntention, TankForward);
 	IntendTurnRight(RotationVector.Z);
 }
 

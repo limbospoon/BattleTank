@@ -17,6 +17,6 @@ public:
 	void YawTurret(float RotationSpeed);
 
 private:
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(EditAnywhere, Category = "Setup")
 		float MaxRotationSpeed = 20;
 };

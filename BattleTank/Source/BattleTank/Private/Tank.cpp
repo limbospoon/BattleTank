@@ -21,11 +21,6 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	if (!TankMovementComponent)
-	{
-		UE_LOG(LogTemp, Error, TEXT("No tank movement component found!!!!"));
-		return;
-	}
 }
 
 // Called to bind functionality to input
@@ -34,20 +29,15 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-void ATank::AimAt(FVector Target)
+void ATank::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
-	TankAimingComponent->AimAt(Target, LaunchSpeed);
-}
-
-void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
-{
-	TankAimingComponent->SetBarrelReference(BarrelToSet);
+	TankAimingComponent->Initialise(BarrelToSet, TurretToSet);
 	Barrel = BarrelToSet;
 }
 
-void ATank::SetTurretReference(UTankTurret* TurretToSet)
+void ATank::AimAt(FVector Target)
 {
-	TankAimingComponent->SetTurretReference(TurretToSet);
+	TankAimingComponent->AimAt(Target, LaunchSpeed);
 }
 
 void ATank::Fire()
